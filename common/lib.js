@@ -1,4 +1,4 @@
-export const log = (msg, obj) => {
+exports.log = (msg, obj = undefined) => {
     if(obj) {
         console.log(msg, obj);  // eslint-disable-line no-console
     } else {

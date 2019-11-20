@@ -1,6 +1,7 @@
 # Headstorm Challenge
 2019 [Headstorm Challenge](https://github.com/Headstorm/Interview/blob/master/challenges) submission by Rick Spencer
 
+
 ## Front End Challenge
 
 
@@ -9,12 +10,15 @@ I chose NodeJS as the REST API because it allows the entire project to be git-de
 to a docker deployment.  The route controller could in theory be split into separate files if at some point the service
 should be migrated to a microservices model.
 
-Due to the brevity of the timeline I chose not to employ a repository pattern.
+> Due to the brevity of the timeline I chose not to employ a repository pattern.
 
-Express was chosen as the framework in order to quickly add structure to the data types to be exchanged on node.  It
-also makes the employment of CORS trivial.
+#### Modules Used
+* Express was chosen as the framework in order to quickly add structure to the data types to be exchanged on node.  It
+also makes the employment of CORS trivial
+* The use of mongoose was selected to support and manage data connectivity
+* body-parser was used to quickly process
+payload data
 
-The use of mongoose was selected to support and manage data connectivity.
 
 ## Database Challenge
 
@@ -37,4 +41,6 @@ order.  Secondly, to provide the ability to retain future cancelled or partial o
 separate deliveries and yet retain the integrity of the customer-order relationship.  Lastly, to add a quick look-up
 feature to the customer table whereby they can retrieve their list of orders without incurring heavy queries.
 
-For brevity I chose not to add self-references or data exploration hooks.
+> I currently don't have a database visualization tool so I described the relationships in code
+>
+> For brevity I chose not to add self-references or data exploration hooks

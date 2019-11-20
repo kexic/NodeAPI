@@ -2,9 +2,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
 const config = require('./config.js');
-const log = require('./common/lib');
+const log = require('./common/lib').log;
 
 const app = express();
 
