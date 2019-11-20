@@ -1,13 +1,13 @@
 {
-  "name": "product-app",
+  "name": "headstorm-2019-rick-spencer",
+  "description": "A 2019 Headstorm Challenge submission by Rick Spencer",
+  "author": "Rick Spencer",
   "version": "1.0.0",
-  "description": "This is zepbook product app",
+  "license": "MIT",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "ZeptoBook",
-  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",

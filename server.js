@@ -1,6 +1,10 @@
 // get dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+const config = require('./config.js');
+const log = require('./common/lib');
 
 const app = express();
 
@@ -16,9 +20,8 @@ app.use(function(req, res, next) {
     next();
   });
 
+
 // Configuring the database
-const config = require('./config.js');
-const mongoose = require('mongoose');
 require('./routes/product.routes.js')(app);
 
 mongoose.Promise = global.Promise;
@@ -27,18 +30,18 @@ mongoose.Promise = global.Promise;
 mongoose.connect(config.url, {
     useNewUrlParser: true
 }).then(() => {
-    console.log("Successfully connected to the database");    
+    log("Successfully connected to the database");
 }).catch(err => {
-    console.log('Could not connect to the database. Exiting now...', err);
+    log('Could not connect to the database. Exiting now...', err);
     process.exit();
 });
 
 // default route
 app.get('/', (req, res) => {
-    res.json({"message": "Welcome to ZeptoBook Product app"});
+    res.json({"message": "Headstorm 2019 Challenge submission by Rick Spencer"});
 });
 
 // listen on port 3000
 app.listen(config.serverport, () => {
-    console.log("Server is listening on port 3000");
+    log("Server is listening on port 3000");
 });

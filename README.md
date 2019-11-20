@@ -1,6 +1,40 @@
-# NodeAPI
-How to create Restful CRUD API with Node.js MongoDB and Express
+# Headstorm Challenge
+2019 [Headstorm Challenge](https://github.com/Headstorm/Interview/blob/master/challenges) submission by Rick Spencer
 
-Update MongoDB connection Url in config.js file
+## Front End Challenge
 
-Install Node.js and relevant dependencies in your app folder
+
+## Back End Challenge
+I chose NodeJS as the REST API because it allows the entire project to be git-deployed.  It also lends well to migrating
+to a docker deployment.  The route controller could in theory be split into separate files if at some point the service
+should be migrated to a microservices model.
+
+Due to the brevity of the timeline I chose not to employ a repository pattern.
+
+Express was chosen as the framework in order to quickly add structure to the data types to be exchanged on node.  It
+also makes the employment of CORS trivial.
+
+The use of mongoose was selected to support and manage data connectivity.
+
+## Database Challenge
+
+I decided to undertake all the challenge work in Mongo DB, which I had never worked with previously.  It was a way to
+add difficulty to the task, but it was also the most appropriate tool to use as the creation of the underlying data
+structure was most portable and transparent.  Lastly, given the task did not entail specific instructions for usage
+requirements (multi-AZ, unicode support, base performance SLAs, etc.) I believe it was a suitable choice.
+
+When analyzing the data given, I had a couple of unanswered questions that impacted the structure of the final database.
+Of course, without client clarification, I was forced to make an educational guess on these gaps.  The first pertains to
+the values given by Basic Widget Order and Advanced Widget Order as the value could either be a quantity or an ID.  I
+chose to interpret it as the latter.  Secondly, the Protection Plan could have been product-specific or possibly had an
+expiration which was not specified.  I therefore presented it in the data as a global perpetual setting.  Lastly, the
+address as written would be extremely difficult to split into its component parts and therefore the migration of this
+data would likely require a manual process for re-entry (at the least oversight of an algorithm whereby the user could
+correct mistakes).
+
+I decided to introduce a customer-order-relationship table for a couple of reasons.  Firstly, to track the status of the
+order.  Secondly, to provide the ability to retain future cancelled or partial orders the ability to be split into
+separate deliveries and yet retain the integrity of the customer-order relationship.  Lastly, to add a quick look-up
+feature to the customer table whereby they can retrieve their list of orders without incurring heavy queries.
+
+For brevity I chose not to add self-references or data exploration hooks.

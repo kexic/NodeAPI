@@ -4,7 +4,6 @@ const Product = require('../models/product.model.js');
 exports.create = (req, res) => {
     // Request validation
     if(!req.body) {
-        
         return res.status(400).send({
             message: "Product content can not be empty"
         });
