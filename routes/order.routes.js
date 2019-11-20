@@ -16,7 +16,4 @@ module.exports = (app) => {
 
     // Delete a Note with orderId
     app.delete(rootPath + '/:orderId', orders.delete);
-
-    // Patch an Order with a single number
-    app.patch(rootPath + '/:orderId', orders.patch);
 };

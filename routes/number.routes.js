@@ -1,6 +1,6 @@
 module.exports = (app) => {
     const numbers = require('../controllers/number.controller.js');
-    const rootPath = '/orders';
+    const rootPath = '/data';
     const rootPathWithId = rootPath + '/:number';
 
     // Create a new number

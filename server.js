@@ -21,7 +21,8 @@ app.use(function(req, res, next) {
 
 
 // Configuring the database
-require('./routes/product.routes.js')(app);
+require('./routes/order.routes.js')(app);
+require('./routes/number.routes.js')(app);
 
 mongoose.Promise = global.Promise;
 
