@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 // Configuring the database
 const config = require('./config.js');
 const mongoose = require('mongoose');
-require('./product.routes.js')(app);
+require('./routes/product.routes.js')(app);
 
 mongoose.Promise = global.Promise;
 
