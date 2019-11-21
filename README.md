@@ -4,6 +4,39 @@
 
 ## Front End Challenge
 
+I deferred this to last as I have the most recent experience on my resume to illustrate these skills.  The later
+challenges were less represented.  Big stones first.
+
+Project Setup Instructions:
+
+* Clone this repository
+* Execute the following scripts
+
+> yarn
+
+then
+
+> yarn client-install
+
+finally, to run the client and the server together
+
+> yarn dev
+
+Notes:
+
+* I did not provide a ReCaptcha key.  Instead you can enter in your own keys in the file
+
+> client/src/components/keys/keys.js
+
+mongodb install scripts are found in:
+
+> database/*
+
+Tasks Remaining:
+* Add pleasant and responsive form design to the contact form
+* Add form feedback validation (preferably as the user is typing)
+* Add username "taken" support pre-form submit
+*
 
 ## Back End Challenge
 I chose NodeJS as the REST API because it allows the entire project to be git-deployed.  It also lends well to migrating
