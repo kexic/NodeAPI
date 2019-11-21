@@ -8,27 +8,24 @@ const maxLength = max => value =>
 	value && value.length > max ? `Must be ${max} characters or less` : undefined;
 const maxLengthMessage = maxLength(250);
 const maxLengthInput = maxLength(30);
-const maxLengthPhone = maxLength(8);
 
-const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
-	<div>
-		<label>{label}</label>
-		<div>
-			<input {...input} placeholder={label} type={type} />
-      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+const basicField = ({ input, label, type, meta: { touched, error, warning } }) => {
+	return (
+		<div class="input-row">
+			<input placeholder={label} type={type} />
+  			{touched && error && <span className="error">{error}</span>}
 		</div>
-	</div>
-);
+	)
+};
 
-const renderTextArea = ({ input, label, type, meta: { touched, error, warning } }) => (
-	<div>
-		<label>{label}</label>
-		<div>
+const basicTextArea = ({ input, label, type, meta: { touched, error, warning } }) => {
+	return (
+		<div class="input-row">
 			<textarea {...input} placeholder={label} type={type} />
-      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+      		{touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
 		</div>
-	</div>
-);
+	)
+};
 
 const ContactUs = props => {
 	const { handleSubmit, pristine, reset, submitting } = props;
@@ -38,7 +35,7 @@ const ContactUs = props => {
 				<div>
 					<Field
 						name="firstName"
-						component={renderField}
+						component={basicField}
 						type="text"
 						label="First Name"
 						validate={[required, maxLengthInput]}
@@ -49,7 +46,7 @@ const ContactUs = props => {
 				<div>
 					<Field
 						name="lastName"
-						component={renderField}
+						component={basicField}
 						type="text"
 						label="Last Name"
 						validate={[required, maxLengthInput]}
@@ -60,21 +57,10 @@ const ContactUs = props => {
 				<div>
 					<Field
 						name="email"
-						component={renderField}
+						component={basicField}
 						type="email"
 						label="Email"
 						validate={[required, maxLengthInput]}
-					/>
-				</div>
-			</div>
-			<div>
-				<div>
-					<Field
-						name="phone"
-						component={renderField}
-						type="number"
-						label="Phone"
-						validate={[required, maxLengthPhone]}
 					/>
 				</div>
 			</div>
@@ -84,7 +70,7 @@ const ContactUs = props => {
 					<Field
 						name="message"
 						type="text"
-						component={renderTextArea}
+						component={basicTextArea}
 						validate={[required, maxLengthMessage]}
 						className={'commentsWidth'}
 					/>
