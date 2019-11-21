@@ -3,7 +3,7 @@ var url = "mongodb://localhost:27017/";
 
 MongoClient.connect(url, function(err, db) {
 	if (err) throw err;
-	var dbo = db.db("testdb");
+	var dbo = db.db("originaldb");
 	var record = {
 		'Record ID': 1234,
 		'Name': "Joe Smith",
