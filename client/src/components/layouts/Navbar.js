@@ -35,7 +35,7 @@ class Navbar extends Component {
 			<div>
 				<Nav tabs>
 					<NavItem>
-						<Link className="nav-link" to="/">Home</Link>
+						<Link className="nav-link" to="/">Contact Us</Link>
 					</NavItem>
 					{ ! isAuthenticated && (
 						<div>

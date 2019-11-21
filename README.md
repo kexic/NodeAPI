@@ -32,11 +32,12 @@ mongodb install scripts are found in:
 
 > database/*
 
-Tasks Remaining:
+Tasks / Imporovements Remaining (in a perfect world would be part of the deliverable):
 * Add pleasant and responsive form design to the contact form
 * Add form feedback validation (preferably as the user is typing)
 * Add username "taken" support pre-form submit
-*
+* Submit the contact form entry to a mailer or database collection process
+* Add Recaptcha support for the contact form
 
 ## Back End Challenge
 I chose NodeJS as the REST API because it allows the entire project to be git-deployed.  It also lends well to migrating
