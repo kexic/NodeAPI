@@ -11,7 +11,7 @@ const maxLengthInput = maxLength(30);
 
 const basicField = ({ input, label, type, meta: { touched, error, warning } }) => {
 	return (
-		<div class="input-row">
+		<div className={"input-row"}>
 			<input placeholder={label} type={type} />
   			{touched && error && <span className="error">{error}</span>}
 		</div>
@@ -20,8 +20,8 @@ const basicField = ({ input, label, type, meta: { touched, error, warning } }) =
 
 const basicTextArea = ({ input, label, type, meta: { touched, error, warning } }) => {
 	return (
-		<div class="input-row">
-			<textarea {...input} placeholder={label} type={type} />
+		<div className={"input-row"}>
+			<textarea placeholder={label} type={type} />
       		{touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
 		</div>
 	)
@@ -77,7 +77,7 @@ const ContactUs = props => {
 				</div>
 			</div>
 			<div>
-				<button type="submit" disabled={pristine || submitting}>Submit</button>
+				<button type="submit" disabled={submitting}>Submit</button>
 				<button type="button" disabled={pristine || submitting} onClick={reset}>
 					Clear Values
 				</button>
