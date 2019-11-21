@@ -7,11 +7,17 @@
   "main": "server.js",
   "scripts": {
     "server": "node server.js",
+    "client-install": "npm install --prefix client",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "mongoose": "^5.4.2"
+    "mongoose": "^5.7.12"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0"
   }
 }
