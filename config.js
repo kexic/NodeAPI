@@ -1,4 +1,6 @@
 module.exports = {
-    url: '<Specify Your DB Url here>',
-    serverport: 3000 
-}
+	url: 'mongodb://localhost:27017/',
+	legacydb: 'testdb',
+	newdb: 'newdb',
+    serverport: 5000
+};

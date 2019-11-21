@@ -1,9 +1,11 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var config = require('../config');
+var url = config.url;
+var database = config.legacydb;
 
 MongoClient.connect(url, function(err, db) {
 	if (err) throw err;
-	var dbo = db.db("originaldb");
+	var dbo = db.db(database);
 	var record = {
 		'Record ID': 1234,
 		'Name': "Joe Smith",

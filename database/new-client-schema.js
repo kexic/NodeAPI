@@ -1,4 +1,4 @@
-// Customers Table
+// Customer Table
 
 var customers = [];
 
@@ -29,7 +29,7 @@ var customer = {
 customers.push(customer);
 
 
-// Products Table
+// Product Table
 
 var products = [];
 
@@ -44,7 +44,7 @@ products.push({
 });
 
 
-// Orders Table
+// Order Table
 
 var orders = [];
 
@@ -56,11 +56,11 @@ orders.push({
 });
 
 
-// Customer-Order-Relationship Table
+// CustomersOrders Relationship Table (Many-to-Many)
 
-var customerOrders = [];
+var customersOrders = [];
 
-customerOrders.push({
+customersOrders.push({
 	_id: 1111,
 	customer_id: 1,
 	order_id: 1234,
@@ -68,9 +68,77 @@ customerOrders.push({
 });
 
 
-// Create the catalogues
 
-db.categories.insert( { _id: "Product", children: [] });
-db.categories.insert( { _id: "Customer", parent: "CustomerOrders", children: [] } );
-db.categories.insert( { _id: "Orders", parent: "CustomerOrders" } );
+// Create the collections
+
+var MongoClient = require('mongodb').MongoClient;
+var config = require('../config');
+var url = config.url;
+var database = config.newdb;
+var collections = {
+	Customer: "Customer",
+	Order: "Order",
+	Product: "Product",
+	CustomersOrders: "CustomersOrders"
+};
+
+MongoClient.connect(url, function(err, db) {
+	if (err) throw err;
+	var dbo = db.db(database);
+
+	// Insert data manually (TODO:  Write script to accomplish this against a data set)
+
+	// Customers
+	customers.map(
+		function(customer) {
+			dbo.collection(collections.Customer).insertOne(customer, function(err, res) {
+				if (err) throw err;
+				console.log(collections.Customer + " record inserted");
+			});
+		}
+	);
+
+	// Products
+	products.map(
+		function(product) {
+			dbo.collection(collections.Product).insertOne(product, function(err, res) {
+				if (err) throw err;
+				console.log(collections.Product + " record inserted");
+			});
+		}
+	);
+
+	// Orders
+	orders.map(
+		function(order) {
+			dbo.collection(collections.Order).insertOne(order, function(err, res) {
+				if (err) throw err;
+				console.log(collections.Order + " record inserted");
+			});
+		}
+	);
+
+	// CustomersOrders
+	customersOrders.map(
+		function(customerOrder) {
+			dbo.collection(collections.CustomersOrders).insertOne(customerOrder, function(err, res) {
+				if (err) throw err;
+				console.log(collections.CustomersOrders + " record inserted");
+			});
+		}
+	);
+
+	// Table Relationships
+	dbo.collection(collections.Product).insert( { _id: "productId", name: collections.Product, children: [] });
+	dbo.collection(collections.Customer).insert( { _id: "customerId", name: collections.Customer, parent: collections.CustomersOrders } );
+	dbo.collection(collections.Order).insert( { _id: "orderId", name: collections.Order, parent: collections.CustomersOrders } );
+	dbo.collection(collections.CustomersOrders).insert( {
+		_id: "customersOrdersId",
+		name: collections.CustomersOrders,
+		children: [collections.Customer, collections.Order]
+	} );
+
+	// Close the database
+	db.close();
+});
 

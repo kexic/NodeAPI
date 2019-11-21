@@ -43,5 +43,5 @@ app.get('/', (req, res) => {
 
 // listen on port 3000
 app.listen(config.serverport, () => {
-    log("Server is listening on port 3000");
+    log("Server is listening on port " + config.serverport);
 });

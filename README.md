@@ -29,12 +29,12 @@ requirements (multi-AZ, unicode support, base performance SLAs, etc.) I believe 
 
 When analyzing the data given, I had a couple of unanswered questions that impacted the structure of the final database.
 Of course, without client clarification, I was forced to make an educational guess on these gaps.  The first pertains to
-the values given by Basic Widget Order and Advanced Widget Order as the value could either be a quantity or an ID.  I
-chose to interpret it as the latter.  Secondly, the Protection Plan could have been product-specific or possibly had an
-expiration which was not specified.  I therefore presented it in the data as a global perpetual setting.  Lastly, the
-address as written would be extremely difficult to split into its component parts and therefore the migration of this
-data would likely require a manual process for re-entry (at the least oversight of an algorithm whereby the user could
-correct mistakes).
+the values given by Basic Widget Order and Advanced Widget Order as the value could be a quantity, price or an ID.  I
+chose to interpret it as the id (had it been a quantity I would have expected the verbiage "Ordered").  Secondly, the
+Protection Plan could have been product-specific or possibly had an expiration which was not specified.  I therefore
+presented it in the data as a global perpetual setting.  Lastly, the address as written would be extremely difficult to
+split into its component parts and therefore the migration of this data would likely require a manual process for
+re-entry (at the least oversight of an algorithm whereby the user could correct mistakes).
 
 I decided to introduce a customer-order-relationship table for a couple of reasons.  Firstly, to track the status of the
 order.  Secondly, to provide the ability to retain future cancelled or partial orders the ability to be split into
